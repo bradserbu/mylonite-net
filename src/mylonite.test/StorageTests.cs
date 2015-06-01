@@ -6,23 +6,29 @@ using System.Threading.Tasks;
 using mylonite.extensions;
 using mylonite.storage;
 using System.IO;
+using NUnit.Framework;
 
 namespace mylonite.test
 {
     public class StorageTests
     {
-        public void KeyValueStoreLoadUnloadTest()
+        KeyValueDatabaseConfiguration Configuration = KeyValueDatabaseConfiguration.Default;
+        string DatabaseName = "test-kvdb";
+
+        public void LoadUnloadDeleteTest()
         {
-            var databaseName = "test-kvdb";
-            var databasePath = Path.Combine("./data", databaseName);
+            var databaseDirectory = Path.Combine(Configuration.DataDirectory, DatabaseName);
+            var store = new KeyValueDatabase(DatabaseName, Configuration);
+            store.Load();
 
-            if (Directory.Exists(databasePath))
-                Directory.Delete(databasePath, true);
+            Assert.IsTrue(store.IsLoaded);
+            Assert.IsTrue(Directory.Exists(databaseDirectory));
 
-            using (var store = new KeyValueStore("test-kvdb"))
-            {
-                store.Load();
-            }
+            store.Unload();
+            Assert.IsFalse(store.IsLoaded);
+
+            store.Delete();
+            Assert.IsFalse(Directory.Exists(databaseDirectory));
         }
     }
 }

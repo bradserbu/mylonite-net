@@ -16,9 +16,7 @@ namespace mylonite.test
         static void RunStorageTests()
         {
             var tests = new StorageTests();
-
-            // ** Test loading/unloading a key value store
-            tests.KeyValueStoreLoadUnloadTest();
+            tests.LoadUnloadDeleteTest();
         }
     }
 }

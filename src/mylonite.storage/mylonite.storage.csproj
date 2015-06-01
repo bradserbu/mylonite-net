@@ -44,9 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KeyValueStore.cs" />
+    <Compile Include="KeyValueDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="KeyValueStoreConfiguration.cs" />
+    <Compile Include="KeyValueDatabaseConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Lightning.NET\src\LightningDB\LightningDB.csproj">

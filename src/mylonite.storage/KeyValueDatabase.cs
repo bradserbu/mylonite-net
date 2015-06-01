@@ -11,7 +11,7 @@ using mylonite.extensions;
 
 namespace mylonite.storage
 {
-    public class KeyValueStore : NamedComponent
+    public class KeyValueDatabase : NamedComponent
     {
         #region Constants
         const EnvironmentOpenFlags ENV_OPEN_FLAGS = EnvironmentOpenFlags.WriteMap | EnvironmentOpenFlags.MapAsync;
@@ -20,8 +20,8 @@ namespace mylonite.storage
         #endregion
 
         #region Constructors
-        public KeyValueStore(string name) : this(name, KeyValueStoreConfiguration.Default) { }
-        public KeyValueStore(string name, KeyValueStoreConfiguration config)
+        public KeyValueDatabase(string name) : this(name, KeyValueDatabaseConfiguration.Default) { }
+        public KeyValueDatabase(string name, KeyValueDatabaseConfiguration config)
             : base(name)
         {
             this.Configuration = config;
@@ -31,10 +31,10 @@ namespace mylonite.storage
         LightningEnvironment m_env;
 
         #region Properties
-        public KeyValueStoreConfiguration Configuration { get; private set; }
+        public KeyValueDatabaseConfiguration Configuration { get; private set; }
         #endregion
 
-        #region Open/Close
+        #region Load/Unload
         protected override void OnLoad()
         {
             // ** Create the storage file
@@ -42,7 +42,7 @@ namespace mylonite.storage
             var DBDirectory = Path.GetDirectoryName(DBPath);
 
             // ** Sparse File Support
-            if (File.Exists(DBPath) == false 
+            if (!File.Exists(DBPath)
                 && Configuration.SparseFileSupportEnabled)
             {
                 // If the database didn't already exist,
@@ -75,8 +75,31 @@ namespace mylonite.storage
         }
         #endregion
 
-        #region Collection Interface
+        #region Delete Database
+        public void Delete()
+        {
+            // ** Ensure the database is unloaded
+            if (IsLoaded)
+                throw new Exception("Database must be unloaded before it can be deleted.");
 
+            // ** Delete the database by deleting it's containing directory
+            var DBDirectory = Path.Combine(Configuration.DataDirectory, Name);
+            if (Directory.Exists(DBDirectory))
+            {
+                Directory.Delete(DBDirectory, true);
+            }
+        }
+        #endregion
+
+        #region Collection Interface
+        public void CreateCollection(string collectionName)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteCollection(string collectionName)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

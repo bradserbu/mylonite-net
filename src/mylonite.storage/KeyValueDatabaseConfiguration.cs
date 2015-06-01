@@ -8,13 +8,13 @@ using mylonite.extensions;
 
 namespace mylonite.storage
 {
-    public class KeyValueStoreConfiguration
+    public class KeyValueDatabaseConfiguration
     {
-        public static KeyValueStoreConfiguration Default
+        public static KeyValueDatabaseConfiguration Default
         {
             get
             {
-                return new KeyValueStoreConfiguration()
+                return new KeyValueDatabaseConfiguration()
                 {
                     DataDirectory = "./data/",
                     SparseFileSupportEnabled = true,
@@ -24,7 +24,7 @@ namespace mylonite.storage
             }
         }
 
-        KeyValueStoreConfiguration() { }
+        KeyValueDatabaseConfiguration() { }
 
         [JsonProperty("data_directory")]
         public string DataDirectory { get; private set; }
