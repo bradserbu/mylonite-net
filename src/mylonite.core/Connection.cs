@@ -32,8 +32,8 @@ namespace mylonite.core
         #endregion
 
         #region Abstract Interface
-        protected virtual void OnOpen() { }
-        protected virtual void OnClose() { }
+        protected abstract void OnOpen();
+        protected abstract void OnClose();
         #endregion
     }
 }

@@ -9,26 +9,57 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.core", "mylonite.c
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.storage", "mylonite.storage\mylonite.storage.csproj", "{432B5AB5-EF57-4ACA-8268-354DC0140CF2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{65655EFD-EFEA-49E0-9312-77581C9EAA18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightningDB", "..\..\Lightning.NET\src\LightningDB\LightningDB.csproj", "{4A034D32-98A2-4A6D-9569-D26B5C151AE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.test", "mylonite.test\mylonite.test.csproj", "{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Release|x86.ActiveCfg = Release|Any CPU
 		{7B278400-5397-4911-A14F-2ADD8738FA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B278400-5397-4911-A14F-2ADD8738FA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B278400-5397-4911-A14F-2ADD8738FA74}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{7B278400-5397-4911-A14F-2ADD8738FA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B278400-5397-4911-A14F-2ADD8738FA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B278400-5397-4911-A14F-2ADD8738FA74}.Release|x86.ActiveCfg = Release|Any CPU
 		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Release|x86.ActiveCfg = Release|Any CPU
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|x86.ActiveCfg = Debug|x86
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|x86.Build.0 = Debug|x86
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|x86.ActiveCfg = Release|x86
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|x86.Build.0 = Release|x86
+		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0} = {65655EFD-EFEA-49E0-9312-77581C9EAA18}
 	EndGlobalSection
 EndGlobal
