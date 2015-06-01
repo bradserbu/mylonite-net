@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.extensions", "mylonite.extensions\mylonite.extensions.csproj", "{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.core", "mylonite.core\mylonite.core.csproj", "{7B278400-5397-4911-A14F-2ADD8738FA74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.storage", "mylonite.storage\mylonite.storage.csproj", "{432B5AB5-EF57-4ACA-8268-354DC0140CF2}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1C49AD2-E1DE-41BE-BFDC-241E2EDF43A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B278400-5397-4911-A14F-2ADD8738FA74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B278400-5397-4911-A14F-2ADD8738FA74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B278400-5397-4911-A14F-2ADD8738FA74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B278400-5397-4911-A14F-2ADD8738FA74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
