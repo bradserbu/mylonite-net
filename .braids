@@ -1,6 +1,6 @@
 {
   "lib/lightning.net": {
-    "url": "https://bradserbu:Uns3cure@github.com/bradserbu/Lightning.Net.git",
+    "url": "https://github.com/bradserbu/Lightning.Net.git",
     "remote": "master/braid/lib/lightning.net",
     "branch": "master",
     "squashed": true,
