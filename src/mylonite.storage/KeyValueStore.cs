@@ -38,22 +38,31 @@ namespace mylonite.storage
         protected override void OnLoad()
         {
             // ** Create the storage file
-            var path = Path.Combine(Configuration.DataDirectory, Name, DB_FILE_NAME);
-            var exists = File.Exists(path);
+            var DBPath = Path.Combine(Configuration.DataDirectory, Name, DB_FILE_NAME);
+            var DBDirectory = Path.GetDirectoryName(DBPath);
 
-            // ** Load the storage environment
-            m_env = new LightningEnvironment(path, ENV_OPEN_FLAGS);
-            m_env.MaxDatabases = Configuration.MaxCollections;
-
-            // Sparse File Support
-            if (!exists && Configuration.SparseFileSupportEnabled)
+            // ** Sparse File Support
+            if (File.Exists(DBPath) == false 
+                && Configuration.SparseFileSupportEnabled)
             {
                 // If the database didn't already exist,
                 // then open the file with a small size initially,
                 // then close it so we can mark it as sparse
-                
-                m_env.Open();
+                var temp_env = new LightningEnvironment(DBDirectory, ENV_OPEN_FLAGS);
+                temp_env.MapSize = Configuration.DatabaseFileSize;
+                temp_env.Open();
+                temp_env.Close();
+
+                FileExtensions.MarkAsSparseFile(DBPath);
             }
+
+            // ** Load the storage environment
+            m_env = new LightningEnvironment(DBDirectory, ENV_OPEN_FLAGS);
+            m_env.MaxDatabases = Configuration.MaxCollections;
+            m_env.MapSize = Configuration.DatabaseFileSize;
+
+            // ** Open the storage environment
+            m_env.Open();
 
             base.OnLoad();
         }
