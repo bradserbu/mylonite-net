@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace mylonite.logging.providers
 {
-    public class ConsoleLogger : ILog
+    public class ConsoleLogProvider : ILog
     {
-        public ConsoleLogger()
+        public ConsoleLogProvider()
         {
             StatusLength = 10;
         }
@@ -17,7 +17,7 @@ namespace mylonite.logging.providers
         #region Settings
         public int StatusLength { get; private set; }
         #endregion
-
+        
         #region Write
         public void Write(string message)
         {

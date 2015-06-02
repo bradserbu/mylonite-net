@@ -55,6 +55,16 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mylonite.extensions\mylonite.extensions.csproj">
+      <Project>{c1c49ad2-e1de-41be-bfdc-241e2edf43a4}</Project>
+      <Name>mylonite.extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mylonite.logging\mylonite.logging.csproj">
+      <Project>{00389e70-c98b-4938-99e0-2c3d66bc9856}</Project>
+      <Name>mylonite.logging</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

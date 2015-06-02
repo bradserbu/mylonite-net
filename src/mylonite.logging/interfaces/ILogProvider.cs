@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace mylonite.logging.interfaces
 {
-    public class ILogger
+    public interface ILogProvider
     {
-        
+        void WriteEntry(LogEntry entry);
     }
 }

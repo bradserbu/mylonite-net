@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using mylonite.core.interfaces;
+using mylonite.logging.interfaces;
 
 namespace mylonite.core
 {
@@ -15,6 +16,8 @@ namespace mylonite.core
         }
 
         public bool IsLoaded { get; private set; }
+
+        protected ILog Log { get; protected set; }
 
         #region Public Interface
         public void Load()

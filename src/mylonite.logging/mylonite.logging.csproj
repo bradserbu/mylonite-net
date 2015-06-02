@@ -43,11 +43,11 @@
   <ItemGroup>
     <Compile Include="interfaces\ILog.cs" />
     <Compile Include="interfaces\ILogEntry.cs" />
-    <Compile Include="interfaces\ILogger.cs" />
+    <Compile Include="interfaces\ILogProvider.cs" />
     <Compile Include="LogEntry.cs" />
-    <Compile Include="LogManager.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="providers\ConsoleLogger.cs" />
+    <Compile Include="providers\ConsoleLogProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\mylonite.extensions\mylonite.extensions.csproj">
