@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using mylonite.extensions;
+using System.Collections.Concurrent;
 
 namespace mylonite.storage
 {
@@ -29,6 +30,7 @@ namespace mylonite.storage
         #endregion
 
         LightningEnvironment m_env;
+        ConcurrentDictionary<Guid, KeyValueDatabaseConnection> m_active_connections;
 
         #region Properties
         public KeyValueDatabaseConfiguration Configuration { get; private set; }
@@ -64,10 +66,22 @@ namespace mylonite.storage
             // ** Open the storage environment
             m_env.Open();
 
+            // ** Initialize the connection pools
+            m_active_connections = new ConcurrentDictionary<Guid, KeyValueDatabaseConnection>();
+
             base.OnLoad();
         }
         protected override void OnUnload()
         {
+            // ** Cancel all active connections
+            foreach (var kvp in m_active_connections)
+            {
+                var connectionId = kvp.Key;
+                var connection = kvp.Value;
+
+                connection.Close();
+            }
+
             m_env.Flush(true);
             m_env.Close();
 
@@ -75,7 +89,7 @@ namespace mylonite.storage
         }
         #endregion
 
-        #region Delete Database
+        #region Delete
         public void Delete()
         {
             // ** Ensure the database is unloaded
@@ -101,5 +115,33 @@ namespace mylonite.storage
             throw new NotImplementedException();
         }
         #endregion
+
+        #region Connection Management
+        public KeyValueDatabaseConnection OpenConnection(bool readOnly = false)
+        {
+            var connectionType = readOnly
+                               ? KeyValueDatabaseConnection.ConnectionType.ReadOnly
+                               : KeyValueDatabaseConnection.ConnectionType.ReadWrite;
+
+            var connection = new KeyValueDatabaseConnection(this, connectionType);
+            connection.Open();
+
+            return connection;
+        }
+        internal void ReleaseConnection(Guid connectionId)
+        {
+            KeyValueDatabaseConnection connection;
+            
+            var success = m_active_connections.TryRemove(connectionId, out connection);
+            if (success == false)
+                throw new Exception("Error releasing connection: id={0}".format(connectionId));
+        }
+        internal LightningTransaction BeginTransaction(TransactionBeginFlags flags)
+        {
+            return m_env.BeginTransaction(flags);
+        }
+        #endregion
+
+        
     }
 }

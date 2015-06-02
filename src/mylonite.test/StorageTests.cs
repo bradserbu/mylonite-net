@@ -7,6 +7,7 @@ using mylonite.extensions;
 using mylonite.storage;
 using System.IO;
 using NUnit.Framework;
+using System.Diagnostics;
 
 namespace mylonite.test
 {
@@ -18,17 +19,58 @@ namespace mylonite.test
         public void LoadUnloadDeleteTest()
         {
             var databaseDirectory = Path.Combine(Configuration.DataDirectory, DatabaseName);
-            var store = new KeyValueDatabase(DatabaseName, Configuration);
-            store.Load();
+            var database = new KeyValueDatabase(DatabaseName, Configuration);
+            database.Load();
 
-            Assert.IsTrue(store.IsLoaded);
+            Assert.IsTrue(database.IsLoaded);
             Assert.IsTrue(Directory.Exists(databaseDirectory));
 
-            store.Unload();
-            Assert.IsFalse(store.IsLoaded);
+            database.Unload();
+            Assert.IsFalse(database.IsLoaded);
 
-            store.Delete();
+            database.Delete();
             Assert.IsFalse(Directory.Exists(databaseDirectory));
+        }
+
+        public void PerformanceTest(long numRecords, Func<long, string> keyGenerator, Func<long, string> valueGenerator)
+        {
+            TimeSpan setElapsed,
+                     saveElapsed,
+                     totalElapsed;
+
+            var timer = Stopwatch.StartNew();
+            using (var database = new KeyValueDatabase(DatabaseName, Configuration))
+            {
+                database.Load();
+                using (var connection = database.OpenConnection())
+                {
+                    // Store the values
+                    for (var lcv = 0; lcv < numRecords; lcv++)
+                    {
+                        var key = keyGenerator(lcv);
+                        var value = valueGenerator(lcv);
+
+                        connection.Set(key, value);
+                    }
+                    setElapsed = timer.Elapsed;
+
+                    // Save all the data
+                    connection.Save();
+                    saveElapsed = timer.Elapsed;
+
+                    // Close the connection
+                    connection.Close();
+
+                    // Unload the database
+                    database.Unload();
+                }
+            }
+            timer.Stop();
+            totalElapsed = timer.Elapsed;
+
+            Console.WriteLine("- Set......... {0:N4} at {1:N2} rec/sec.", setElapsed.TotalSeconds, numRecords / setElapsed.TotalSeconds);
+            Console.WriteLine("- Saved....... {0:N4} at {1:N2} rec/sec.", saveElapsed.TotalSeconds, numRecords / saveElapsed.TotalSeconds);
+            Console.WriteLine("- Total....... {0:N4} at {1:N2} rec/sec.", totalElapsed.TotalSeconds, numRecords / totalElapsed.TotalSeconds);
         }
     }
 }

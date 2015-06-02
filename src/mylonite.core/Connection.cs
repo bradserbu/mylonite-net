@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mylonite.core
 {
-    public abstract class Connection : IConnection
+    public abstract class Connection : IConnection, IDisposable
     {
         #region Properties
         public bool IsOpened { get; private set; }
@@ -35,5 +35,11 @@ namespace mylonite.core
         protected abstract void OnOpen();
         protected abstract void OnClose();
         #endregion
+
+        void IDisposable.Dispose()
+        {
+            if (!IsOpened)
+                Close();
+        }
     }
 }
