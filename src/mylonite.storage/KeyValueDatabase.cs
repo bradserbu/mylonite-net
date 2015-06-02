@@ -15,7 +15,7 @@ namespace mylonite.storage
     public class KeyValueDatabase : NamedComponent
     {
         #region Constants
-        const EnvironmentOpenFlags ENV_OPEN_FLAGS = EnvironmentOpenFlags.WriteMap | EnvironmentOpenFlags.MapAsync;
+        const EnvironmentOpenFlags ENV_OPEN_FLAGS = EnvironmentOpenFlags.None;
         static readonly long DB_INITIAL_SIZE = 1.Megabytes();
         const string DB_FILE_NAME = "data.mdb"; 
         #endregion
@@ -51,7 +51,7 @@ namespace mylonite.storage
                 // then open the file with a small size initially,
                 // then close it so we can mark it as sparse
                 var temp_env = new LightningEnvironment(DBDirectory, ENV_OPEN_FLAGS);
-                temp_env.MapSize = Configuration.DatabaseFileSize;
+                temp_env.MapSize = DB_INITIAL_SIZE;
                 temp_env.Open();
                 temp_env.Close();
 

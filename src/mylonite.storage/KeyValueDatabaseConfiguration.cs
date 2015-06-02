@@ -18,7 +18,7 @@ namespace mylonite.storage
                 {
                     DataDirectory = "./data/",
                     SparseFileSupportEnabled = true,
-                    DatabaseFileSize = 2.Gigabytes(),
+                    DatabaseFileSize = 4.Gigabytes(),
                     MaxCollections = 10
                 };
             }

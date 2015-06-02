@@ -47,7 +47,7 @@ namespace mylonite.test
                 using (var connection = database.OpenConnection())
                 {
                     // Store the values
-                    for (var lcv = 0; lcv < numRecords; lcv++)
+                    for (long lcv = 0; lcv < numRecords; lcv++)
                     {
                         var key = keyGenerator(lcv);
                         var value = valueGenerator(lcv);
@@ -57,34 +57,33 @@ namespace mylonite.test
                     setElapsed = timer.Elapsed;
 
                     // Get the values
-                    for (var lcv = 0; lcv < numRecords; lcv++)
+                    for (long lcv = 0; lcv < numRecords; lcv++)
                     {
                         var key = keyGenerator(lcv);
-                        //var value = valueGenerator(lcv);
                         string value;
 
                         connection.Get(key, out value);
                     }
                     getElapsed = timer.Elapsed - setElapsed;
 
-                    // Remove the values
-                    for (var lcv = 0; lcv < numRecords; lcv++)
-                    {
-                        var key = keyGenerator(lcv);
-
-                        connection.Remove(key);
-                    }
-                    removeElapsed = timer.Elapsed - getElapsed;
-
                     // Save all the data
                     connection.Save();
-                    saveElapsed = timer.Elapsed;
+                    saveElapsed = timer.Elapsed - getElapsed;
+
+                    // Remove the values
+                    for (long lcv = 0; lcv < numRecords; lcv++)
+                    {
+                        var key = keyGenerator(lcv);
+                        connection.Remove(key);
+                    }
+                    removeElapsed = timer.Elapsed - saveElapsed;
 
                     // Close the connection
                     connection.Close();
 
                     // Unload the database
                     database.Unload();
+                    database.Delete();
                 }
             }
             timer.Stop();
@@ -93,7 +92,7 @@ namespace mylonite.test
             Console.WriteLine("- Set......... {0:N4} at {1:N2} rec/sec.", setElapsed.TotalSeconds, numRecords / setElapsed.TotalSeconds);
             Console.WriteLine("- Get......... {0:N4} at {1:N2} rec/sec.", getElapsed.TotalSeconds, numRecords / getElapsed.TotalSeconds);
             Console.WriteLine("- Remove...... {0:N4} at {1:N2} rec/sec.", removeElapsed.TotalSeconds, numRecords / removeElapsed.TotalSeconds);
-            Console.WriteLine("- Saved....... {0:N4} at {1:N2} rec/sec.", saveElapsed.TotalSeconds, numRecords / saveElapsed.TotalSeconds);
+            Console.WriteLine("- Save........ {0:N4} at {1:N2} rec/sec.", saveElapsed.TotalSeconds, numRecords / saveElapsed.TotalSeconds);
             Console.WriteLine("- Total....... {0:N4} at {1:N2} rec/sec.", totalElapsed.TotalSeconds, numRecords / totalElapsed.TotalSeconds);
         }
     }
