@@ -1,4 +1,5 @@
-﻿using mylonite.core.interfaces;
+﻿using mylonite.extensions;
+using mylonite.core.interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,5 +21,10 @@ namespace mylonite.core
         }
 
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return "{0} ({1})".format(Name, GetType().Name);
+        }
     }
 }

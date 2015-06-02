@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using mylonite.core.interfaces;
 using mylonite.logging.interfaces;
+using mylonite.logging;
 
 namespace mylonite.core
 {
@@ -12,18 +13,24 @@ namespace mylonite.core
     {
         protected Component()
         {
-
+            Log = Logger.GetLog(this.GetType());
+            IsLoaded = false;
         }
 
+        protected ILog Log { get; private set; }
         public bool IsLoaded { get; private set; }
-
-        protected ILog Log { get; protected set; }
-
+        
         #region Public Interface
         public void Load()
         {
+            // ** If we are already loadded, issue a NOOP
+            if (IsLoaded)
+                return;
+
+            Log.Debug("Loading component: {0}...", this);
             OnLoad();
             IsLoaded = true;
+            Log.Status("LOADED", "Loaded component: {0}", this);
         }
         public void Unload()
         {
@@ -32,8 +39,10 @@ namespace mylonite.core
                 return;
             }
 
+            Log.Debug("Unloading component: {0}...", this);
             IsLoaded = false;
             OnUnload();
+            Log.Status("UNLOADED", "Unloaded component: {0}", this);
         }
         #endregion
 

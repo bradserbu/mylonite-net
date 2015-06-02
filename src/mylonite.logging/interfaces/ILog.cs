@@ -8,6 +8,13 @@ namespace mylonite.logging.interfaces
 {
     public interface ILog
     {
+        void Info(string message);
+        void Info(string message, params object[] args);
+        void Debug(string message);
+        void Debug(string message, params object[] args);
+        void Trace(string message);
+        void Trace(string message, params object[] args);
+
         /// <summary>
         /// Writes a message to the log using the default level
         /// </summary>

@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace mylonite.logging.interfaces
 {
-
-
     public interface ILogEntry
     {
         string Source { get; }

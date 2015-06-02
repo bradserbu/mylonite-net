@@ -11,13 +11,40 @@ namespace mylonite.logging.providers
     {
         public ConsoleLogProvider()
         {
-            StatusLength = 10;
+            StatusLength = 15;
         }
 
         #region Settings
         public int StatusLength { get; private set; }
         #endregion
-        
+
+        #region Info/Debug/Trace
+        public void Info(string message)
+        {
+            Write((int)LogLevel.Info, message);
+        }
+        public void Info(string message, params object[] args)
+        {
+            Info(string.Format(message, args));
+        }
+        public void Debug(string message)
+        {
+            Write((int)LogLevel.Debug, message);
+        }
+        public void Debug(string message, params object[] args)
+        {
+            Debug(string.Format(message, args));
+        }
+        public void Trace(string message)
+        {
+            Write((int)LogLevel.Trace, message);
+        }
+        public void Trace(string message, params object[] args)
+        {
+            Trace(string.Format(message, args));
+        }
+        #endregion
+
         #region Write
         public void Write(string message)
         {
@@ -41,7 +68,7 @@ namespace mylonite.logging.providers
         public void Status(string status, string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(status.ToUpperInvariant().PadRight(StatusLength));
+            Console.Write(status.ToUpperInvariant().PadLeft(StatusLength));
             Console.ResetColor();
             Console.WriteLine("| {0}", message);
         }

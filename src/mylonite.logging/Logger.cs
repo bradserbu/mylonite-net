@@ -12,17 +12,17 @@ namespace mylonite.logging
     {
         static readonly ConsoleLogProvider CONSOLE_LOG = new ConsoleLogProvider();
 
-        public ILog GetLog<T>()
+        public static ILog GetLog(Type type)
         {
-            var source = typeof(T).FullName;
+            var source = type.FullName;
             return GetLog(source);
         }
 
-        public ILog GetLog(string source)
+        static ILog GetLog(string source)
         {
             return CONSOLE_LOG;
         }
 
-        public ILog GetLog(string source, string context) { throw new NotImplementedException(); }
+        static ILog GetLog(string source, string context) { throw new NotImplementedException(); }
     }
 }
