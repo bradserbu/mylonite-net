@@ -16,17 +16,6 @@ namespace mylonite.logging.interfaces
         void Trace(string message, params object[] args);
 
         /// <summary>
-        /// Writes a message to the log using the default level
-        /// </summary>
-        /// <param name="message"></param>
-        void Write(string message);
-        /// <summary>
-        /// Writes a formatted message to the log using the dault log level
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="args"></param>
-        void Write(string message, params object[] args);
-        /// <summary>
         /// Writes a message to the log using the specified log level
         /// </summary>
         /// <param name="level"></param>

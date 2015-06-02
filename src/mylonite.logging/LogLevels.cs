@@ -8,8 +8,8 @@ namespace mylonite.logging
 {
     public enum LogLevel : int
     {
-        Info = 0,
-        Debug = 5,
-        Trace = 10
+        Info = 3,
+        Debug = 2,
+        Trace = 1
     }
 }

@@ -11,10 +11,12 @@ namespace mylonite.logging.providers
     {
         public ConsoleLogProvider()
         {
+            MinLogLevel = (int)LogLevel.Info;
             StatusLength = 15;
         }
 
         #region Settings
+        public int MinLogLevel { get; private set; }
         public int StatusLength { get; private set; }
         #endregion
 
@@ -46,21 +48,15 @@ namespace mylonite.logging.providers
         #endregion
 
         #region Write
-        public void Write(string message)
-        {
-            Console.WriteLine(message);
-        }
-        public void Write(string message, params object[] args)
-        {
-            Write(string.Format(message, args));
-        }
         public void Write(int level, string message)
         {
-            Console.WriteLine("({0:D2}): {1}", level, message);
+            if (level >= MinLogLevel)
+                Console.WriteLine("[{1}]", level, message);
         }
         public void Write(int level, string message, params object[] args)
         {
-            Write(string.Format(message, args));
+            if (level >= MinLogLevel)
+                Write(level, string.Format(message, args));
         }
         #endregion
 
