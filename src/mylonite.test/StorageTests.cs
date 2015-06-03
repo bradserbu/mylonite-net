@@ -31,7 +31,6 @@ namespace mylonite.test
             database.Delete();
             Assert.IsFalse(Directory.Exists(databaseDirectory));
         }
-
         public void PerformanceTest(long numRecords, Func<long, string> keyGenerator, Func<long, string> valueGenerator)
         {
             TimeSpan setElapsed,

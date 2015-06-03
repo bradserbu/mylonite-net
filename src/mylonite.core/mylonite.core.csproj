@@ -44,11 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="activities\DataActivity.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="interfaces\IActivity.cs" />
     <Compile Include="interfaces\IComponent.cs" />
     <Compile Include="interfaces\IConnection.cs" />
     <Compile Include="interfaces\IHasName.cs" />
+    <Compile Include="interfaces\IJob.cs" />
+    <Compile Include="Job.cs" />
     <Compile Include="NamedComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
