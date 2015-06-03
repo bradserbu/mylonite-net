@@ -8,9 +8,11 @@ namespace mylonite.core.interfaces
 {
     public interface IActivity : IHasName
     {
-        void Run();
-        Task RunAsync();
+        IList<IArgument> Arguments { get; }
 
-        void OnError(Exception error);
+        IValue Run(IDictionary<IArgument, IValue> arguments);
+        Task<IValue> RunAsync(IDictionary<IArgument, IValue> arguments);
+
+        void OnError(Exception error, Dictionary<IArgument, IValue> arguments);
     }
 }

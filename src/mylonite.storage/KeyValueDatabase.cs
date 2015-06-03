@@ -141,7 +141,5 @@ namespace mylonite.storage
             return m_env.BeginTransaction(flags);
         }
         #endregion
-
-        
     }
 }
