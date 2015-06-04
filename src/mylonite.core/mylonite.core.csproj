@@ -55,6 +55,7 @@
     <Compile Include="interfaces\IJob.cs" />
     <Compile Include="interfaces\IValue.cs" />
     <Compile Include="Job.cs" />
+    <Compile Include="JobBuilder.cs" />
     <Compile Include="NamedComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="values\Option.cs" />
