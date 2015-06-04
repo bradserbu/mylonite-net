@@ -11,9 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.storage", "mylonit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{65655EFD-EFEA-49E0-9312-77581C9EAA18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightningDB", "..\..\Lightning.NET\src\LightningDB\LightningDB.csproj", "{4A034D32-98A2-4A6D-9569-D26B5C151AE0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mylonite.test", "mylonite.test\mylonite.test.csproj", "{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightningDB", "..\lib\lightning.net\src\LightningDB\LightningDB.csproj", "{4A034D32-98A2-4A6D-9569-D26B5C151AE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,14 +33,14 @@ Global
 		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Debug|x64.Build.0 = Debug|x64
 		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Release|x64.ActiveCfg = Release|x64
 		{432B5AB5-EF57-4ACA-8268-354DC0140CF2}.Release|x64.Build.0 = Release|x64
-		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|x64.ActiveCfg = Debug|x64
-		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|x64.Build.0 = Debug|x64
-		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|x64.ActiveCfg = Release|x64
-		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|x64.Build.0 = Release|x64
 		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Debug|x64.ActiveCfg = Debug|x64
 		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Debug|x64.Build.0 = Debug|x64
 		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Release|x64.ActiveCfg = Release|x64
 		{5A991AF9-5EBB-44AC-B0F9-7FC05FA0DD12}.Release|x64.Build.0 = Release|x64
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|x64.ActiveCfg = Debug|x64
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Debug|x64.Build.0 = Debug|x64
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|x64.ActiveCfg = Release|x64
+		{4A034D32-98A2-4A6D-9569-D26B5C151AE0}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

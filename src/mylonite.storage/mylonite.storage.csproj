@@ -50,10 +50,6 @@
     <Compile Include="KeyValueDatabaseConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Lightning.NET\src\LightningDB\LightningDB.csproj">
-      <Project>{4a034d32-98a2-4a6d-9569-d26b5c151ae0}</Project>
-      <Name>LightningDB</Name>
-    </ProjectReference>
     <ProjectReference Include="..\mylonite.core\mylonite.core.csproj">
       <Project>{7b278400-5397-4911-a14f-2add8738fa74}</Project>
       <Name>mylonite.core</Name>
