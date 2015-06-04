@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace mylonite.core.activities
 {
-    public class DataActivity : IActivity
-    {
+    //public class DataActivity : IActivity
+    //{
 
-    }
+    //}
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace mylonite.core
 {
-    public class Job : NamedComponent
+    public class Job : NamedComponent, IJob
     {
         public Job(string name)
             : base(name)
@@ -15,7 +15,9 @@ namespace mylonite.core
 
         }
 
-        public void Execute(IActivity activity) { throw new NotImplementedException(); }
-        public Task ExecuteAsync(IActivity activity) { throw new NotImplementedException(); }
+        public IValue Execute(IActivity activity, Dictionary<IArgument, IValue> arguments)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
