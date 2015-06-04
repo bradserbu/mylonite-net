@@ -11,7 +11,14 @@ namespace mylonite.test
     {
         static void Main(string[] args)
         {
-            RunStorageTests();
+            RunJobTests();
+            // RunStorageTests();
+        }
+
+        static void RunJobTests()
+        {
+            var tests = new JobTests();
+            tests.ResultTest();
         }
 
         static void RunStorageTests()

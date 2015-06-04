@@ -11,7 +11,7 @@ namespace mylonite.test
     public class JobTests
     {
         /// <summary>
-        /// Returns a result if the input string contains the value find. 
+        /// Returns a ok if the input string contains the value find. 
         /// </summary>
         /// <param name="input"></param>
         /// <param name="find"></param>
@@ -29,10 +29,17 @@ namespace mylonite.test
         {
             var input = "Hello, World!";
 
-            var result = Contains(input, "Hello");
-            Assert.IsFalse(result.IsError);
-            Assert.IsTrue(result.IsOk);
+            var ok = Contains(input, "Hello");
+            Assert.IsFalse(ok.IsError);
+            Assert.IsTrue(ok.IsOk);
+            Assert.IsTrue(ok.Ok());
+            Assert.Catch(() => ok.Error());
 
+            var error = Contains(null, "abscd");
+            Assert.IsTrue(error.IsError);
+            Assert.IsFalse(error.IsOk);
+            Assert.IsTrue(error.Error() is ArgumentNullException);
+            Assert.Catch(() => error.Ok());
         }
     }
 }
