@@ -9,16 +9,16 @@ namespace mylonite.core.interfaces
     public interface IArgument : IHasName
     {
         /// <summary>
-        /// Get a valid value for the argument from a supplied value.
+        /// Get a valid some for the argument from a supplied some.
         /// Throws an exception if the argument is not valid.
         /// </summary>
         /// <param name="fromValue"></param>
         /// <returns></returns>
         IValue GetValue(object fromValue);
         /// <summary>
-        /// Determine if the supplied value is valid for this argument.
+        /// Determine if the supplied some is valid for this argument.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="some"></param>
         /// <returns></returns>
         bool IsValid(object value);
     }

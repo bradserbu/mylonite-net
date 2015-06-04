@@ -9,11 +9,11 @@ namespace mylonite.core.interfaces
     public interface IValue
     {
         /// <summary>
-        /// Returns whether the underlying value is set.
+        /// Returns whether the underlying some is set.
         /// </summary>
         bool HasValue { get; }
         /// <summary>
-        /// The underlying value
+        /// The underlying some
         /// </summary>
         object Value { get; }
     }

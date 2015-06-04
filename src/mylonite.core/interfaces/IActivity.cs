@@ -14,7 +14,7 @@ namespace mylonite.core.interfaces
         IList<IArgument> Arguments { get; }
 
         /// <summary>
-        /// Run the activity with the specified list of arguments and their value
+        /// Run the activity with the specified list of arguments and their some
         /// </summary>
         /// <param name="arguments"></param>
         /// <returns></returns>

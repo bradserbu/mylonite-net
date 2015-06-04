@@ -11,24 +11,20 @@ namespace mylonite.test
     {
         static void Main(string[] args)
         {
-            RunJobTests();
+            RunValueTests();
             // RunStorageTests();
         }
 
-        static void RunJobTests()
+        static void RunValueTests()
         {
-            var tests = new JobTests();
-            tests.ResultTest();
+            var tests = new ValueTests();
+            tests.RunTests();
         }
 
         static void RunStorageTests()
         {
             var tests = new StorageTests();
-            tests.LoadUnloadDeleteTest();
-            tests.PerformanceTest(
-                1000000, 
-                i => "key-{0}".format(i), 
-                i => "Hello, World... for the #{0} time.".format(i));
+            
         }
     }
 }

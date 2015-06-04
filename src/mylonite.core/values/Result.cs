@@ -24,9 +24,9 @@ namespace mylonite.core.values
             };
         }
         /// <summary>
-        /// A successful value 
+        /// A successful some 
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="some"></param>
         /// <returns></returns>
         public static Result<T> Ok(T value)
         {
@@ -46,7 +46,7 @@ namespace mylonite.core.values
         public bool IsError { get; private set; }
         public bool IsOk { get { return !IsError; } }
 
-        #region Methods to extract the underlying value
+        #region Methods to extract the underlying some
         public T Ok()
         {   
             if (IsError) throw new NotSupportedException("Cannot access the Ok value for a result that contains an error.");
@@ -63,7 +63,7 @@ namespace mylonite.core.values
 
         #region IValue Explicit Interface
         /// <summary>
-        /// Results always have a value: An error or an underlying value.
+        /// Results always have a some: An error or an underlying some.
         /// </summary>
         bool IValue.HasValue
         {
@@ -71,7 +71,7 @@ namespace mylonite.core.values
         }
 
         /// <summary>
-        /// Returns the underlying value which will be an Error or a Value
+        /// Returns the underlying some which will be an Error or a Value
         /// </summary>
         object IValue.Value
         {

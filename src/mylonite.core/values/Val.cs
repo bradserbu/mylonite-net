@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace mylonite.core.values
 {
     /// <summary>
-    /// Base class for a genric value
+    /// Base class for a genric some
     /// </summary>
     public class Val<T> : IValue
     {
         /// <summary>
-        /// Create a value class with it's underlying value set.
+        /// Create a some class with it's underlying some set.
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="some"></param>
         public Val(T value)
         {
             m_value = value;

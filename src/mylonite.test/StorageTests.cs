@@ -16,6 +16,20 @@ namespace mylonite.test
         KeyValueDatabaseConfiguration Configuration = KeyValueDatabaseConfiguration.Default;
         string DatabaseName = "test-kvdb";
 
+        public void RunTests()
+        {
+            LoadUnloadDeleteTest();
+        }
+
+        public void RunBenchmarks()
+        {
+            PerformanceTest(
+                1000000,
+                i => "key-{0}".format(i),
+                i => "Hello, World... for the #{0} time.".format(i));
+        }
+
+        [TestCase]
         public void LoadUnloadDeleteTest()
         {
             var databaseDirectory = Path.Combine(Configuration.DataDirectory, DatabaseName);
@@ -31,6 +45,7 @@ namespace mylonite.test
             database.Delete();
             Assert.IsFalse(Directory.Exists(databaseDirectory));
         }
+        
         public void PerformanceTest(long numRecords, Func<long, string> keyGenerator, Func<long, string> valueGenerator)
         {
             TimeSpan setElapsed,
